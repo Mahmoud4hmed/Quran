@@ -2,6 +2,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import Link from 'next/link';
+import DOMPurify from 'dompurify';
 
 function ArQuran() {
 
@@ -35,12 +36,12 @@ function ArQuran() {
 
         {surah.map((surah) => (
             <div key={surah.number} className="border mb-4 text-xl hover:shadow-2xl hover:text-[#edecdc] hover:scale-105 shadow-[#81b29a] shadow-sm text-center rounded-xl hover:bg-[#81b29a] cursor-pointer duration-300 border-[#81b29a] p-2">
-                <Link href={`surah/${surah.number}`}>
-                    <h1> <span className='bg-[#81b29a] p-2 m-3 rounded-full'>{surah.number}</span> {surah.name} </h1>
-                    <h1>{surah.englishName} | {surah.englishNameTranslation}</h1>
+                <Link href={`surah/${DOMPurify.sanitize(surah.number)}`}>
+                <h1> <span className='bg-[#81b29a] p-2 m-3 rounded-full'>{DOMPurify.sanitize(surah.number)}</span> {DOMPurify.sanitize(surah.name)} </h1>
+                    <h1>{DOMPurify.sanitize(surah.englishName)} | {surah.englishNameTranslation}</h1>
                 </Link>
             </div>
-        ))}    
+        ))}
         
     </div>
   )
