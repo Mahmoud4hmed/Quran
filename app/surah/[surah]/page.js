@@ -9,6 +9,7 @@ function Surah({ params }) {
     
     const [ayah, setAyah] = useState([]);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const getAyah = async () => {
         
         const url = `https://al-quran1.p.rapidapi.com/${params.surah}`;
@@ -34,7 +35,7 @@ function Surah({ params }) {
 
     useEffect(() => {
         getAyah();
-    }, [])
+    }, [getAyah])
 
   return (
     <>
