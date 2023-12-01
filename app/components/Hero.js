@@ -22,6 +22,8 @@ function Hero() {
         try {
             const response = await fetch(url, options);
             const result = await response.json();
+            console.log(result.data);
+            console.log(result.data.ayahs);
             setAyat([result.data]);
             setAyahs(result.data.ayahs);
         } catch (error) {
@@ -48,7 +50,8 @@ function Hero() {
                 <h4 
                 key={ayahs.number}
                 className='text-3xl pb-3 text-end pr-5 cursor-pointer hover:text-[#81b29a] duration-200 hover:bg-[#edecdc]'>
-                {ayahs.text} <span className='border border-[#81b29a] rounded-full p-1 text-lg'>{ayahs.number}</span>
+                {ayahs.text}
+                <span className='border border-[#81b29a] rounded-full p-1 text-lg'>{ayahs.number}</span>
                 </h4>
             ))}
         </div>
